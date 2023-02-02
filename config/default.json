@@ -1,0 +1,15 @@
+{
+  "port": 5000,
+  "db_host": "localhost",
+  "db_dialect": "postgres",
+  "db_username": "postgres",
+  "db_password": "Uzb$0706",
+  "db_port": "5432",
+  "db_name": "my-library",
+  "pool_max": 5,
+  "pool_min": 0,
+  "pool_acquire": 30000,
+  "pool_idle": 10000,
+  "crypt_password": "myCryp0_$ecretp@$$word",
+  "iv": "Uzb$0706"
+}
