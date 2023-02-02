@@ -3,23 +3,26 @@ const express = require("express");
 const app = express();
 const path = require("path");
 const routes = require("./routes/index.routes");
-const { engine } = require("express-handlebars");
+const exHbs = require("express-handlebars");
 const { sequelize } = require("./models");
 
 // middlewares
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(express.static(path.join(__dirname, "static")));
+app.use(express.static(path.join(__dirname, "public")));
 
 // express-handlebars
-app.engine(
-  ".hbs",
-  engine({
-    extname: ".hbs",
-    layoutsDir: __dirname + "/views/layouts",
-  })
-);
+const hbs = exHbs.create({
+  defaultLayout: "main",
+  extname: "hbs",
+});
+// hbs.handlebars.registerHelper("ifEqual", function (arg1, arg2, options) {
+//   return (arg1 = arg2 ? options.fn(this) : options.inverse(this));
+// });
+app.engine(".hbs", hbs.engine);
 app.set("view engine", ".hbs");
+app.set("views", "views");
+app.use(express.static(path.join(__dirname, "views")));
 
 // routes
 app.use("/api", routes);

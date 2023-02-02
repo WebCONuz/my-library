@@ -1,0 +1,127 @@
+<section id="bookTable">
+  <div class="container py-5" style="min-height: 65vh;">
+    <div class="row">
+      <div class="col-lg-12">
+        {{#if books}}
+          <h3 class="text-success pb-4">Kitoblar!</h3>
+          <table
+            class="table table-bordered align-middle text-center"
+            style="border-color: #000;"
+          >
+            <tr class="table-success" style="border-color: #000;">
+              <th>No</th>
+              <th>Rasm</th>
+              <th>Kitob Nomi</th>
+              <th>Muallif</th>
+              <th>Kategoriya</th>
+              <th>Tahrirlash</th>
+            </tr>
+
+            {{#each books}}
+              <tr>
+                <th>1</th>
+                <td><img
+                    src="{{url}}{{dataValues.bookImg}}"
+                    style="width: 150px;"
+                    alt="kitob-1"
+                  /></td>
+                <td>{{dataValues.title}}</td>
+                <td>{{dataValues.author}}</td>
+                <td>{{dataValues.category}}</td>
+                <td>
+                  <a
+                    href="{{url}}/api/books/create"
+                    title="Add new book"
+                    class="btn btn-outline-success"
+                  ><i class="bi bi-clipboard2-plus"></i></a>
+                  <a
+                    href="{{url}}/api/books/edit/{{dataValues.id}}"
+                    title="Update book"
+                    class="btn btn-outline-primary mx-1"
+                  ><i class="bi bi-pencil"></i></a>
+                  <a
+                    href="#"
+                    title="Delete book"
+                    class="btn btn-outline-danger"
+                  ><i class="bi bi-trash"></i></a>
+                </td>
+              </tr>
+            {{/each}}
+          </table>
+        {{else}}
+          <div class="text-center">
+            <h2 class="text-danger">Hali kitoblar kiritilmadi</h2>
+            <a
+              href="{{url}}books/add"
+              class="btn btn-lg btn-outline-success mt-4"
+            >Kitob kiritish</a>
+          </div>
+        {{/if}}
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-12">
+        {{#if category}}
+          <h3 class="text-success py-4" id="kategoriya">Kategoriyalar!</h3>
+          <table
+            class="table table-bordered align-middle text-center"
+            style="border-color: #000;"
+          >
+            <tr class="table-success" style="border-color: #000;">
+              <th>Id</th>
+              <th>Kategoriya</th>
+              <th>Tahrirlash</th>
+            </tr>
+            {{#each category}}
+              <tr>
+                <th>1</th>
+                <td class="text-capitalize">{{dataValues.category}}</td>
+                <td>
+                  <div class="d-flex justify-content-center">
+                    <a
+                      href="{{url}}/admin/addcategory"
+                      title="Add category"
+                      class="btn btn-outline-success"
+                    ><i class="bi bi-clipboard2-plus"></i></a>
+                    <a
+                      href="{{url}}/admin/category/{{dataValues.id}}"
+                      title="Update category"
+                      class="btn btn-outline-primary mx-2"
+                    ><i class="bi bi-pencil"></i></a>
+                    <form
+                      action="/admin/category/{{dataValues.id}}/delete"
+                      method="POST"
+                    >
+                      <button
+                        type="submit"
+                        title="Delete category"
+                        class="btn btn-outline-danger"
+                      ><i class="bi bi-trash"></i></button>
+                    </form>
+                  </div>
+                </td>
+              </tr>
+            {{/each}}
+          </table>
+        {{else}}
+          <h2 class="text-center text-danger py-4">Hali Kategoriyalar
+            kiritilmagan!</h2>
+        {{/if}}
+      </div>
+    </div>
+    <div class="row mt-3">
+      <nav aria-label="Page navigation" class="d-flex justify-content-center">
+        <ul class="pagination">
+          <li class="page-item active"><a
+              class="page-link"
+              href="#"
+            >Previous</a></li>
+          <li class="page-item"><a class="page-link" href="#">1</a></li>
+          <li class="page-item"><a class="page-link" href="#">2</a></li>
+          <li class="page-item"><a class="page-link" href="#">3</a></li>
+          <li class="page-item"><a class="page-link" href="#">Next</a></li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</section>

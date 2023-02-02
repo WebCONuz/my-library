@@ -1,0 +1,67 @@
+<!-- NAVBAR SECTION -->
+{{#if isAdmin}}
+  <div class="wrapper">
+    <nav>
+      <input type="checkbox" id="show-search" />
+      <input type="checkbox" id="show-menu" />
+      <label for="show-menu" class="menu-icon"><i
+          class="fas fa-bars"
+        ></i></label>
+      <div class="content">
+        <a href="{{url}}">
+          <div class="logo d-flex align-items-center">
+            <img src="{{url}}images/header/Logo.png" alt="Logo" />
+            {{! <p class="text-uppercase mb-0 ms-3">MUHAMMAD AL-XORAZMIY NOMIDAGI TATU SAMARQAND
+                                FILIALI AXBOROT RESURS MARKAZI</p> }}
+          </div>
+        </a>
+        <ul class="links">
+          <li><a href="{{url}}api/books/table"><i
+                class="bi bi-file-pdf-fill"
+              ></i>
+              All Books</a></li>
+          <li><a href="{{url}}description"><i class="bi bi-chat-fill"></i>
+              Descriptions</a></li>
+          <li><a href="{{url}}news/admin"><i class="bi bi-newspaper"></i>
+              News</a></li>
+          {{!-- <li><a href="{{url}}books/add"><i class="bi bi-plus-square"></i> Add Book</a></li> --}}
+          {{!-- <li><a href="{{url}}admin/addcategory"><i class="bi bi-folder-plus"></i> Add category</a></li> --}}
+          {{!-- <li><a href="{{url}}news/add"><i class="bi bi-clipboard2-plus-fill"></i> Add news</a></li> --}}
+          <li><a href="{{url}}admin/signup"><i class="bi bi-person-plus"></i>
+              Add admin</a></li>
+          <li><a href="{{url}}admin/logout"><i
+                class="bi bi-box-arrow-right"
+              ></i>
+              Logout</a></li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+{{else}}
+  <div class="wrapper">
+    <nav>
+      <input type="checkbox" id="show-search" />
+      <input type="checkbox" id="show-menu" />
+      <label for="show-menu" class="menu-icon"><i
+          class="fas fa-bars"
+        ></i></label>
+      <div class="content">
+        <a href="#header">
+          <div class="logo d-flex align-items-center">
+            <img src="{{url}}images/header/Logo.png" alt="" />
+            <p class="text-uppercase mb-0 ms-3">MUHAMMAD AL-XORAZMIY NOMIDAGI
+              TOSHKENT AXBOROT TEXNOLOGIYALARI UNIVERSITETI SAMARQAND FILIALI
+              AXBOROT RESURS MARKAZI</p>
+          </div>
+        </a>
+        <ul class="links">
+          <li><a href="{{url}}">Bosh sahifa</a></li>
+          <li><a href="{{url}}books">Kitoblar</a></li>
+          <li><a href="{{url}}news">E'lonlar</a></li>
+          <li><a href="{{url}}#contact">Bog'lanish</a></li>
+          <li><a href="{{url}}admin/login">Login</a></li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+{{/if}}

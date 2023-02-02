@@ -1,10 +1,12 @@
 const db = require("../models");
 const Book = db.book;
-const Op = db.Sequelize.Op;
+const Category = db.category;
+const config = require("config");
+const { createViewPath } = require("../helpers/create-view-path");
 
 // @Route   POST /api/books/add
 // @descr   Add new book to DB
-// @access  Prived
+// @access  Private
 const createBook = async (req, res) => {
   try {
     // Create a Book
@@ -21,21 +23,21 @@ const createBook = async (req, res) => {
     // Save Book in the database
     const data = await Book.create(book);
 
-    res.send(201, { message: "Book is created successfully", data });
+    res.status(201).send({ message: "Book is created successfully", data });
   } catch (err) {
-    res.send(500, { message: err.message });
+    res.status(500).send({ message: err.message });
   }
 };
 
-// @Route   GET /api/books
+// @Route   GET /api/books/all
 // @descr   Get all books
 // @access  Public
 const findAllBook = async (req, res) => {
   try {
     const data = await Book.findAll();
-    res.send(200, { message: "Request is finished successfully", data });
+    res.status(200).send({ message: "Request is finished successfully", data });
   } catch (err) {
-    res.send(500, { message: err.message });
+    res.status(500).send({ message: err.message });
   }
 };
 
@@ -50,9 +52,9 @@ const findOneBook = async (req, res) => {
         .status(400)
         .json({ message: "Bunday Book bazada mavjud emas" });
 
-    res.send(200, { message: "Request is finished successfully", data });
+    res.status(200).send({ message: "Request is finished successfully", data });
   } catch (err) {
-    res.send(500, { message: err.message });
+    res.status(500).send({ message: err.message });
   }
 };
 
@@ -72,9 +74,9 @@ const updateBook = async (req, res) => {
       returning: true,
     });
 
-    res.send(200, { message: "Book is updated successfully", data });
+    res.status(200).send({ message: "Book is updated successfully", data });
   } catch (err) {
-    res.send(500, { message: err.message });
+    res.status(500).send({ message: err.message });
   }
 };
 
@@ -93,10 +95,74 @@ const deleteBook = async (req, res) => {
       where: { id: +req.params.id },
     });
 
-    res.send(200, { message: "Request is finished successfully", data });
+    res.status(200).send({ message: "Request is finished successfully", data });
   } catch (err) {
-    res.send(500, { message: err.message });
+    res.status(500).send({ message: err.message });
   }
+};
+
+// @Route   GET /api/books
+// @descr   Get all books Page
+// @access  Public
+const getAllBooksPage = async (req, res) => {
+  try {
+    const allbooks = await Book.findAll();
+    res.render(createViewPath("books/books"), {
+      title: "Books Page",
+      url: config.get("url"),
+      books: allbooks.reverse(),
+    });
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+// @Route   GET /api//books/table
+// @descr   Get table page
+// @access  Private
+const getAllBookTablePage = async (req, res) => {
+  try {
+    const allbooks = await Book.findAll();
+    const category = await Category.findAll();
+    res.render(createViewPath("books/booksTable"), {
+      title: "Table of Books",
+      url: config.get("url"),
+      isAdmin: true,
+      books: allbooks,
+      category,
+    });
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+// @Route   GET /api//books/create
+// @descr   Get Add Book Page
+// @access  Private
+const addBookPage = async (req, res) => {
+  try {
+    res.render(createViewPath("books/addBook"), {
+      title: "Add Book",
+      url: config.get("url"),
+      isAdmin: true,
+    });
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+// @Route   GET /api/books/edit/:id
+// @descr   Get Update Book Page
+// @access  Private
+const updateBookPage = async (req, res) => {
+  const oldBook = await Book.findByPk(+req.params.id);
+  res.render("books/updateBook", {
+    title: "Edit Book",
+    url: config.get("url"),
+    isAdmin: true,
+    book: oldBook,
+    id: req.params.id,
+  });
 };
 
 module.exports = {
@@ -105,4 +171,8 @@ module.exports = {
   findOneBook,
   updateBook,
   deleteBook,
+  getAllBooksPage,
+  getAllBookTablePage,
+  addBookPage,
+  updateBookPage,
 };

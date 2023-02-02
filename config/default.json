@@ -11,5 +11,6 @@
   "pool_acquire": 30000,
   "pool_idle": 10000,
   "crypt_password": "myCryp0_$ecretp@$$word",
-  "iv": "Uzb$0706"
+  "iv": "Uzb$0706",
+  "url": "http://localhost:5000/"
 }

@@ -1,0 +1,56 @@
+<!-- ROOT SECTION -->
+<div id="root-section" class="py-5">
+  <div class="root-nav">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <ul class="list-unstyled d-flex justify-content-center mb-5 py-3">
+            <li class="internal-navbar" id="dasturlash">Dasturlash</li>
+            <li class="internal-navbar" id="gumanitar">Ijtimoiy-gumanitar</li>
+            <li class="internal-navbar" id="tabiiy">Tabiiy</li>
+            <li class="internal-navbar" id="badiiy">Badiiy</li>
+            <li class="internal-navbar" id="ilmiy">Ilmiy maqolalar</li>
+            <li class="internal-navbar" id="darslik">Darslik</li>
+            <li class="internal-navbar" id="akt">AKT</li>
+          </ul>
+          <h2 class="main-title text-center mb-5">Kitoblar</h2>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="root">
+    <div class="container">
+      <div class="row">
+        {{#if books}}
+          {{#each books}}
+            <div
+              class="col-sm-6 col-md-4 col-lg-3 mb-4 all
+                {{dataValues.category}}"
+            >
+              <div
+                class="root-card d-flex flex-column align-items-center text-center p-3"
+              >
+                <div class="img-box mb-3">
+                  <img
+                    src="{{dataValues.bookImg}}"
+                    alt="{{dataValues.title}}"
+                  />
+                </div>
+                <h5 class="text-capitalize">{{dataValues.title}}</h5>
+                <p class="text-capitalize">{{dataValues.author}}</p>
+                <button class="main-btn"><a
+                    href="{{url}}{{dataValues.bookFile}}"
+                    target="_blank"
+                  >Yuklab olish</a></button>
+              </div>
+            </div>
+          {{/each}}
+        {{else}}
+          <div class="text-center">
+            <h2 class="text-danger">Hali kitoblar kiritilmadi</h2>
+          </div>
+        {{/if}}
+      </div>
+    </div>
+  </div>
+</div>
