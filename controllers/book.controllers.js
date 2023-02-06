@@ -4,7 +4,7 @@ const Category = db.category;
 const config = require("config");
 const { createViewPath } = require("../helpers/create-view-path");
 
-// @Route   POST /api/books/add
+// @Route   POST /books/api/add
 // @descr   Add new book to DB
 // @access  Private
 const createBook = async (req, res) => {
@@ -29,7 +29,7 @@ const createBook = async (req, res) => {
   }
 };
 
-// @Route   GET /api/books/all
+// @Route   GET /books/api/all
 // @descr   Get all books
 // @access  Public
 const findAllBook = async (req, res) => {
@@ -41,7 +41,7 @@ const findAllBook = async (req, res) => {
   }
 };
 
-// @Route   GET /api/books/:id
+// @Route   GET /books/api/:id
 // @descr   Get one book by ID
 // @access  Public
 const findOneBook = async (req, res) => {
@@ -58,7 +58,7 @@ const findOneBook = async (req, res) => {
   }
 };
 
-// @Route   PUT /api/books/:id
+// @Route   PUT /books/api/:id
 // @descr   Update book by ID
 // @access  Private
 const updateBook = async (req, res) => {
@@ -80,7 +80,7 @@ const updateBook = async (req, res) => {
   }
 };
 
-// @Route   DELETE /api/books/:id
+// @Route   DELETE /books/api/:id
 // @descr   Delete book by ID
 // @access  Private
 const deleteBook = async (req, res) => {
@@ -101,7 +101,7 @@ const deleteBook = async (req, res) => {
   }
 };
 
-// @Route   GET /api/books
+// @Route   GET /books
 // @descr   Get all books Page
 // @access  Public
 const getAllBooksPage = async (req, res) => {
@@ -117,7 +117,7 @@ const getAllBooksPage = async (req, res) => {
   }
 };
 
-// @Route   GET /api/books/table
+// @Route   GET /books/table
 // @descr   Get table page
 // @access  Private
 const getAllBookTablePage = async (req, res) => {
@@ -136,7 +136,7 @@ const getAllBookTablePage = async (req, res) => {
   }
 };
 
-// @Route   GET /api//books/create
+// @Route   GET /books/create
 // @descr   Get Add Book Page
 // @access  Private
 const addBookPage = async (req, res) => {
@@ -151,7 +151,7 @@ const addBookPage = async (req, res) => {
   }
 };
 
-// @Route   GET /api/books/edit/:id
+// @Route   GET /books/edit/:id
 // @descr   Get Update Book Page
 // @access  Private
 const updateBookPage = async (req, res) => {

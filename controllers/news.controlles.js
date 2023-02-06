@@ -13,7 +13,7 @@ const getNewsPage = async (req, res) => {
 
 // @Route   GET /news/table
 // @descr   Get table of all news
-// @access  Privete
+// @access  Private
 const getNewsTable = async (req, res) => {
   try {
     res.render("news/newsTable", {
@@ -26,7 +26,39 @@ const getNewsTable = async (req, res) => {
   }
 };
 
+// @Route   GET /news/add
+// @descr   Get add News Page
+// @access  Private
+const getAddNewsPage = async (req, res) => {
+  try {
+    res.render("news/addNews", {
+      title: "Add News",
+      url: config.get("url"),
+      isAdmin: true,
+    });
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+// @Route   GET /news/edit
+// @descr   Get Edit News Page
+// @access  Private
+const getEditNewsPage = async (req, res) => {
+  try {
+    res.render("news/editNews", {
+      title: "Edit News",
+      url: config.get("url"),
+      isAdmin: true,
+    });
+  } catch (err) {
+    console.log(err);
+  }
+};
+
 module.exports = {
   getNewsPage,
   getNewsTable,
+  getAddNewsPage,
+  getEditNewsPage,
 };
