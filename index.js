@@ -25,7 +25,7 @@ app.set("views", "views");
 app.use(express.static(path.join(__dirname, "views")));
 
 // routes
-app.use("/api", routes);
+app.use("/", routes);
 
 const start = async () => {
   try {

@@ -18,10 +18,10 @@ router.get("/create", addBookPage);
 router.get("/edit/:id", updateBookPage);
 
 // CRUD
-router.post("/add", createBook);
-router.get("/all", findAllBook);
-router.get("/:id", findOneBook);
-router.put("/:id", updateBook);
-router.delete("/:id", deleteBook);
+router.post("/api/add", createBook);
+router.get("/api/all", findAllBook);
+router.get("/api/:id", findOneBook);
+router.put("/api/:id", updateBook);
+router.delete("/api/:id", deleteBook);
 
 module.exports = router;

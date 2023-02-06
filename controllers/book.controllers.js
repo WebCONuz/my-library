@@ -117,7 +117,7 @@ const getAllBooksPage = async (req, res) => {
   }
 };
 
-// @Route   GET /api//books/table
+// @Route   GET /api/books/table
 // @descr   Get table page
 // @access  Private
 const getAllBookTablePage = async (req, res) => {
