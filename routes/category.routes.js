@@ -5,12 +5,16 @@ const {
   findOneCategory,
   updateCategory,
   deleteCategory,
+  getAddCategoryPage,
+  getEditCategoryPage,
 } = require("../controllers/category.controller");
 
-router.post("/api/add", createCategory);
-router.get("/api/all", findAllCategory);
-router.get("/api/:id", findOneCategory);
-router.put("/api/:id", updateCategory);
-router.delete("/api/:id", deleteCategory);
+router.get("/create", getAddCategoryPage);
+router.get("/edit/:id", getEditCategoryPage);
+router.post("/add", createCategory);
+router.get("/all", findAllCategory);
+router.get("/:id", findOneCategory);
+router.put("/:id", updateCategory);
+router.delete("/:id", deleteCategory);
 
 module.exports = router;

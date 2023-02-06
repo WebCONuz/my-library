@@ -156,7 +156,7 @@ const addBookPage = async (req, res) => {
 // @access  Private
 const updateBookPage = async (req, res) => {
   const oldBook = await Book.findByPk(+req.params.id);
-  res.render("books/updateBook", {
+  res.render(createViewPath("books/updateBook"), {
     title: "Edit Book",
     url: config.get("url"),
     isAdmin: true,

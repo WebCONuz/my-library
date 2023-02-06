@@ -16,7 +16,7 @@ const getNewsPage = async (req, res) => {
 // @access  Private
 const getNewsTable = async (req, res) => {
   try {
-    res.render("news/newsTable", {
+    res.render(createViewPath("news/newsTable"), {
       title: "News Table",
       url: config.get("url"),
       isAdmin: true,
@@ -31,7 +31,7 @@ const getNewsTable = async (req, res) => {
 // @access  Private
 const getAddNewsPage = async (req, res) => {
   try {
-    res.render("news/addNews", {
+    res.render(createViewPath("news/addNews"), {
       title: "Add News",
       url: config.get("url"),
       isAdmin: true,
@@ -46,7 +46,7 @@ const getAddNewsPage = async (req, res) => {
 // @access  Private
 const getEditNewsPage = async (req, res) => {
   try {
-    res.render("news/editNews", {
+    res.render(createViewPath("news/editNews"), {
       title: "Edit News",
       url: config.get("url"),
       isAdmin: true,
