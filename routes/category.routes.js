@@ -1,6 +1,6 @@
 const router = require("express").Router();
 const {
-  createCategory,
+  addCategory,
   findAllCategory,
   findOneCategory,
   updateCategory,
@@ -11,7 +11,7 @@ const {
 
 router.get("/create", getAddCategoryPage);
 router.get("/edit/:id", getEditCategoryPage);
-router.post("/add", createCategory);
+router.post("/add", addCategory);
 router.get("/all", findAllCategory);
 router.get("/:id", findOneCategory);
 router.put("/:id", updateCategory);

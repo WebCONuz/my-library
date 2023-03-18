@@ -6,7 +6,7 @@ const { createViewPath } = require("../helpers/create-view-path");
 // @Route   POST /category/add
 // @descr   Add new category to DB
 // @access  Prived
-const createCategory = async (req, res) => {
+const addCategory = async (req, res) => {
   try {
     // Create a Category
     const category = {
@@ -16,7 +16,8 @@ const createCategory = async (req, res) => {
     // Save Category in the database
     const data = await Category.create(category);
 
-    res.status(201).send({ message: "Category is created successfully", data });
+    // res.status(201).send({ message: "Category is created successfully", data });
+    res.redirect("/category/create");
   } catch (err) {
     res.status(500).send({ message: err.message });
   }
@@ -133,7 +134,7 @@ const getEditCategoryPage = async (req, res) => {
 };
 
 module.exports = {
-  createCategory,
+  addCategory,
   findAllCategory,
   findOneCategory,
   updateCategory,

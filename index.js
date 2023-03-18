@@ -34,7 +34,7 @@ const start = async () => {
     console.log("Connection has been established successfully.");
 
     // Listen to project
-    const Port = config.get("port") || 5000;
+    const Port = config.get("port") || 4000;
     app.listen(Port, () => {
       console.log(`Loyiha ${Port}-portda ishga tushdi`);
     });

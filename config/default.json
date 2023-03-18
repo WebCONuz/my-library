@@ -1,5 +1,5 @@
 {
-  "port": 5000,
+  "port": 4000,
   "db_host": "localhost",
   "db_dialect": "postgres",
   "db_username": "postgres",
@@ -12,5 +12,5 @@
   "pool_idle": 10000,
   "crypt_password": "myCryp0_$ecretp@$$word",
   "iv": "Uzb$0706",
-  "url": "http://localhost:5000/"
+  "url": "http://localhost:4000/"
 }
